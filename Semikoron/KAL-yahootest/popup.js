@@ -18,12 +18,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
 async function send(input) {
   jannum = sanitize(input);
+  url = `https://yahooshop.azurewebsites.net/api/httpYahooApi`;
+  sendNum = jannum;
   console.log("Sending Jancode");
-  const response = await fetch(
-    `https://yahooshop.azurewebsites.net/api/httpYahooApi?jannumber=${jannum}`
-  );
+  const requestData = {
+    jancode: sendNum,
+  };
+  const response = await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(requestData),
+  });
+
+  if (!response.ok) {
+    console.log("Error");
+    return;
+  }
+
   const data = await response.json();
-  console.log(data);
 
   str = str + "\n" + data;
   document.getElementById("edit_area").textContent = str;

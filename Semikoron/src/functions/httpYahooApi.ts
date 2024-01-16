@@ -11,7 +11,8 @@ export async function httpYahooApi(
 ): Promise<HttpResponseInit> {
   context.log(`Http function processed request for url "${request.url}"`);
 
-  const number = request.query.get("jannumber") || (await request.text());
+  const requestData = JSON.parse(await request.text());
+  const number = requestData.jancode;
 
   async function fetchname() {
     const YAHOO_API_KEY =
