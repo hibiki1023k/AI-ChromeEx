@@ -27,8 +27,7 @@ export async function httpYahooApi(
       }
       const data = await res.json();
       console.log(data);
-      const name = data.hits[0].name;
-      return name;
+      return data;
     } catch (error) {
       console.error("エラーです:", error);
       return error;
