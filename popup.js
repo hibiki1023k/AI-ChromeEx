@@ -1,3 +1,5 @@
+import { endpoint } from "./.env";
+
 console.log("This is a popup!");
 var str = "";
 
@@ -18,12 +20,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
 async function send(input) {
   req = sanitize(input);
-  url = `https://yahooshop.azurewebsites.net/api/httpYahooApi`;
   sendReq = req;
   console.log("Sending Reqeust");
   const requestData = {
-    model: "gpt-3",
-    request: `${sendReq}`,
+    model: gpt - 3,
+    request: sendReq,
   };
   const response = await fetch(url, {
     method: "POST",
