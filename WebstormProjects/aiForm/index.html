@@ -1,25 +1,29 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>チャットフォーム</title>
-    <link rel="stylesheet" href="/public/global.css">
-</head>
-<body>
-
-<div class="chat-form-container">
-    <div class="header">
+    <link rel="stylesheet" href="/public/global.css" />
+  </head>
+  <body>
+    <div class="chat-form-container">
+      <div class="header">
         <div class="status-dot"></div>
         <div class="title">Kyutech AI Lab</div>
-    </div>
-    <div class="messages">
+      </div>
+      <div class="messages" id="res">
         <!-- メッセージはここに追加されます -->
-
+      </div>
+      <div class="footer">
+        <input
+          type="text"
+          class="search-box"
+          placeholder="メッセージを入力"
+          id="req"
+        />
+        <button id="send">send</button>
+      </div>
     </div>
-    <div class="footer">
-        <input type="text" class="search-box" placeholder="メッセージを入力">
-    </div>
-</div>
-
-</body>
+    <script src="../../sendmessage.js"></script>
+  </body>
 </html>
