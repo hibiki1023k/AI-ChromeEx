@@ -36,6 +36,8 @@ body {
   height: 150px;
   overflow-y: auto;
   padding: 10px;
+  inline-size: auto;
+  overflow-wrap: break-word;
 }
 
 .footer {
