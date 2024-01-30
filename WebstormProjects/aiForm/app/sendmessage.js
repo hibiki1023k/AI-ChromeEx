@@ -1,5 +1,4 @@
-import { KAL_ENDPOINT } from "./.env";
-const url = KAL_ENDPOINT;
+const url = "aaa";
 
 function sanitize(input) {
   var div = document.createElement("div");
@@ -7,15 +6,40 @@ function sanitize(input) {
   return div.innerHTML;
 }
 
+//sendボタンを押したかどうかの判定
 document.addEventListener("DOMContentLoaded", function () {
   var button = document.querySelector("#send");
   button.addEventListener("click", function () {
     var input = document.querySelector("#req");
-    console.log(input.value);
-    send(input.value);
+    if (input.value != "") {
+      send(input.value);
+    }
   });
 });
 
+//refreshボタンを押したかどうかの判定
+document.addEventListener("DOMContentLoaded", function () {
+  var button = document.querySelector("#refresh");
+  button.addEventListener("click", function () {
+    clearChildren();
+  });
+});
+
+// テキストエリアの内容をクリア
+function clearText() {
+  var textForm = document.getElementById("req");
+  textForm.value = "";
+}
+
+//会話を削除
+function clearChildren() {
+  var resDiv = document.getElementById("res");
+  while (resDiv.firstChild) {
+    resDiv.removeChild(resDiv.firstChild);
+  }
+}
+
+//  backendにリクエストを送信
 async function send(input) {
   const req = sanitize(input);
   const sendReq = req;
@@ -24,6 +48,16 @@ async function send(input) {
     model: "gpt - 3",
     request: sendReq,
   };
+  // 送信したリクエストを表示
+  var newDiv = document.createElement("div");
+  newDiv.className = "message";
+  var newContent = document.createTextNode(req);
+  newDiv.appendChild(newContent);
+  var currentDiv = document.querySelector("#res");
+  currentDiv.appendChild(newDiv);
+
+  clearText();
+
   const response = await fetch(url, {
     method: "POST",
     headers: {
@@ -50,7 +84,7 @@ async function send(input) {
   newDiv.appendChild(newContent);
 
   // 既存のdiv要素を取得
-  var currentDiv = document.querySelector(".res");
+  var currentDiv = document.querySelector("#res");
 
   // 新しいdiv要素を既存のdiv要素の子として追加
   currentDiv.appendChild(newDiv);
