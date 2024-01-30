@@ -6,6 +6,5 @@
   "action": {
     "default_popup": "WebstormProjects/aiForm/index.html",
     "default_icon": "hello_extensions.png"
-  },
-  "host_permissions": ["https://"]
+  }
 }
