@@ -43,6 +43,21 @@ body {
   padding: 10px;
   text-align: center;
   display: flex;
+  flex-grow: inherit;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  overflow: hidden;
+}
+
+.button {
+  /*width: 30px;        !* 幅を30pxに設定 *!*/
+  /*height: 30px;       !* 高さを30pxに設定 *!*/
+  /*display: inline-block; !* インラインブロック要素にする *!*/
+  /*text-align: center; !* テキストを中央に配置 *!*/
+  /*line-height: 30px;  !* テキストを垂直中央に配置するための行の高さ *!*/
+  margin-left: 3px;
+  margin-right: 3px;
+  border-radius: 4px;
 }
 
 .search-box {
