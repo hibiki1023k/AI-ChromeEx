@@ -21,9 +21,9 @@ body {
 }
 
 .status-dot {
-  height: 20px;
-  width: 20px;
-  background-color: #5cb85c;
+  height: 30px;
+  width: 30px;
+  /* background-color: #5cb85c; */
   border-radius: 50%;
   margin-right: 10px;
 }
@@ -38,6 +38,15 @@ body {
   padding: 10px;
   inline-size: auto;
   overflow-wrap: break-word;
+}
+
+.message {
+  width: auto;
+  padding: 5px;
+  margin-bottom: 3px;
+  inline-size: auto;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 .footer {
