@@ -1,4 +1,5 @@
 const url = "aaa";
+var conversation = "";
 
 function sanitize(input) {
   var div = document.createElement("div");
@@ -34,6 +35,7 @@ function clearText() {
 //会話を削除
 function clearChildren() {
   var resDiv = document.getElementById("res");
+  conversation = "";
   while (resDiv.firstChild) {
     resDiv.removeChild(resDiv.firstChild);
   }
@@ -42,11 +44,11 @@ function clearChildren() {
 //  backendにリクエストを送信
 async function send(input) {
   const req = sanitize(input);
-  const sendReq = req;
+  conversation += "User: " + req + ",";
   console.log("Sending Reqeust");
   const requestData = {
     model: "gpt - 3",
-    request: sendReq,
+    request: conversation,
   };
   // 送信したリクエストを表示
   var newDiv = document.createElement("div");
@@ -73,6 +75,7 @@ async function send(input) {
 
   const data = await response.json();
   const res = data.response;
+  conversation += "GPT: " + res + ",";
   // 新しいdiv要素を作成
   var newDiv = document.createElement("div");
 
