@@ -60,17 +60,26 @@ async function send(input) {
 
   clearText();
 
-  const response = await fetch(url, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(requestData),
-  });
+  try {
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(requestData),
+    });
 
-  if (!response.ok) {
-    console.log("Error");
-    return;
+    if (!response.ok) {
+      throw new Error("エラーが発生しました");
+    }
+  } catch (error) {
+    console.log(error);
+    var newDiv = document.createElement("div");
+    newDiv.className = "error_message";
+    var newContent = document.createTextNode("エラーが発生しました");
+    newDiv.appendChild(newContent);
+    var currentDiv = document.querySelector("#res");
+    currentDiv.appendChild(newDiv);
   }
 
   const data = await response.json();
